@@ -158,6 +158,23 @@ namespace DBWeb
             }
         }
 
+        //Remove association of UID with Existing ApP
+        public void DelUserAppPermission(int my_apP_id, int my_uid)
+        {
+            using(UserAccessEntities db = new UserAccessEntities())
+            {
+                var usermem = (from user in db.Users
+                               where user.uid == my_uid
+                               select user).FirstOrDefault();
+                var apPmem = (from apP in db.App_Permission
+                           where apP.app_permission_id == my_apP_id
+                           select apP).FirstOrDefault();
+
+                usermem.App_Permission.Remove(apPmem);
+                db.SaveChanges();
+            }
+        }
+
 
 
     }

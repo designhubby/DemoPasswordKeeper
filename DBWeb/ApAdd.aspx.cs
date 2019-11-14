@@ -19,7 +19,9 @@ namespace DBWeb
         {
             //gvSearchApResults.SelectedIndexChanged += GvSearchApResults_SelectedIndexChanged;
             gvSearchApResults.RowCommand += GvSearchApResults_RowCommand;
+            gvSearchApResults.PageIndexChanging += GvSearchApResults_PageIndexChanging;
             gvPermissionList.SelectedIndexChanged += GvPermissionList_SelectedIndexChanged;
+            gvPermissionList.PageIndexChanging += GvPermissionList_PageIndexChanging;
             dvApplicationDetails.ModeChanging += DvApplicationDetails_ModeChanging;
             dvApplicationDetails.ItemUpdating += DvApplicationDetails_ItemUpdating;
             //load initial conditions: Ap
@@ -50,6 +52,36 @@ namespace DBWeb
 
 
             }
+        }
+
+        private void GvPermissionList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //get sender object
+            GridView gvtemp = (GridView)sender;
+
+            //get next page index 
+            gvtemp.PageIndex = e.NewPageIndex;
+            //get ViewState from gvApP 
+            //Create ViewState Variable from gvApP
+            //--DONE
+            //bind viewstate
+            gvtemp.DataSource = (List<AppPMember>)ViewState["gvPermissionList"];
+            gvtemp.DataBind();
+        }
+
+        private void GvSearchApResults_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //get sender object
+            GridView gvTemp = (GridView)sender;
+            gvTemp.PageIndex = e.NewPageIndex;
+            //retrieve past grid datasource from viewstate
+            //--add ViewState in the Search Button code on the previous MV
+            //---DONE
+            //plot the grid with new page index
+            gvTemp.DataSource = (List<AppMember>)ViewState["gvSearchAp"];
+            gvTemp.DataBind();
+
+
         }
 
         //Button: Permission Row Selected Actions
@@ -119,9 +151,11 @@ namespace DBWeb
                 mvApAdd.ActiveViewIndex = 3;
                 GridView gvtemp = (GridView)sender;
                 int currentRow = Convert.ToInt32(e.CommandArgument);
-                int datakeyApID = Int32.Parse(gvtemp.DataKeys[0].Value.ToString());
+                int datakeyApID = Int32.Parse(gvtemp.DataKeys[currentRow].Value.ToString());
                 AppsAccessLayer db = new AppsAccessLayer();
-                gvPermissionList.DataSource = db.GetAppPermissions(datakeyApID);
+                List<AppPMember> lstApPMem = db.GetAppPermissions(datakeyApID);
+                ViewState["gvPermissionList"] = lstApPMem;
+                gvPermissionList.DataSource = lstApPMem;
                 gvPermissionList.DataBind();
                 GridViewRow selectedRow = gvSearchApResults.Rows[currentRow];
                 //Below: Show Ap Name on Next Page
@@ -132,7 +166,7 @@ namespace DBWeb
                 ViewState["NewPermission"] = "false";
                 //Below: Show Ap Name on Next Page\\
             }
-            else
+            else if(e.CommandName == "cmdEditAp")
             {   //Button: Edit Application
                 //e.CommandName == cmdEditAp
                 mvApAdd.ActiveViewIndex = 2;
@@ -205,8 +239,11 @@ namespace DBWeb
         {
             mvApAdd.ActiveViewIndex = 1;
             string searchTerm = txtSearchTerm.Text.ToString();
+            
             AppsAccessLayer dbap = new AppsAccessLayer();
-            gvSearchApResults.DataSource = dbap.GetAppMembers(searchTerm);
+            List<AppMember> memResults = dbap.GetAppMembers(searchTerm);
+            ViewState["gvSearchAp"] = memResults;
+            gvSearchApResults.DataSource = memResults;
             gvSearchApResults.DataBind();
 
         }

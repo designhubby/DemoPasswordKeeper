@@ -6,7 +6,7 @@ using System.Web;
 namespace DBWeb
 {
 
-
+    [Serializable]
     public class AppMember
     {
         public int app_id { set; get; }
@@ -14,7 +14,7 @@ namespace DBWeb
         public string details { set; get; }
 
     }
-
+    [Serializable]
     public class AppPMember
     {
         public int      app_permission_id   { set; get; }
@@ -24,7 +24,7 @@ namespace DBWeb
         public string   Permission_N        { set; get; }
         public int      admin               { set; get; }
     }
-
+    
     public class AppsAccessLayer
     {
         public List<AppMember> GetAppMembers(string searchappname)

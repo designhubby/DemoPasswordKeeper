@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,6 +29,7 @@ namespace DBWeb
 
             gvPermissionList.PageIndexChanging += GvPermissionList_PageIndexChanging;
             gvPermissionList.SelectedIndexChanged += GvPermissionList_SelectedIndexChanged;
+            gvPermissionList.RowCommand += GvPermissionList_RowCommand;
 
 
 
@@ -42,10 +44,45 @@ namespace DBWeb
 
 
                 //LoadData;
+                
                 LoadGvUserData(gvUsers);
 
                 //DataBind
                 gvUsers.DataBind();
+            }
+        }
+
+        private void GvPermissionList_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridView gv_apP = (GridView)sender;
+            string command_name = e.CommandName;
+            string btn_name = "btnApP_Delete";
+            if (command_name == btn_name)
+            {
+                int rowIndexCurrent = Convert.ToInt32(e.CommandArgument);
+                //u id
+                int rowDataKeyCurrent_UID = Int32.Parse(gv_apP.DataKeys[rowIndexCurrent].Values[2].ToString());
+                //apP id
+                int rowDataKeyCurrent_ApPID = Int32.Parse(gv_apP.DataKeys[rowIndexCurrent].Values[0].ToString());
+                //delete apP association
+                UserAppPermission uapp = new UserAppPermission();
+                uapp.DelUserAppPermission(rowDataKeyCurrent_ApPID, rowDataKeyCurrent_UID);
+
+
+                //update results
+                UserAppPermission user_to_apP = new UserAppPermission();
+                List<UserAppPermissionMember> temp_uaP = new List<UserAppPermissionMember>();
+                string ad_uid = (string)ViewState["ad_uid"];
+                temp_uaP = (List<UserAppPermissionMember>)user_to_apP.GetUserAppPermission(ad_uid);
+                gvPermissionList.DataSource = temp_uaP;
+                Session["temp_uaP"] = temp_uaP;
+                gvPermissionList.DataBind();
+
+                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "UID: " + rowDataKeyCurrent_UID + "ApP_ID" + rowDataKeyCurrent_ApPID + "');", true);
+            }
+            else
+            {
+
             }
         }
 
@@ -65,7 +102,11 @@ namespace DBWeb
         {
           //retrieve database obj
             UserAccessLayer userdb = new UserAccessLayer();
-            mygridview.DataSource = userdb.getUsers();
+            List<UserMembers> tempusermem = new List<UserMembers>();
+            tempusermem  = userdb.getUsers();
+            mygridview.DataSource = tempusermem;
+            Session["ListofUserGvResults"] = tempusermem;
+
 
         }
         private void LoadGvUserData(GridView mygridview, int mysearchtype, string mysearchterm)
@@ -74,7 +115,11 @@ namespace DBWeb
             UserAccessLayer userdb = new UserAccessLayer();
             int searchType = mysearchtype;
             string searchTerm = mysearchterm; // will require entry validation function
-            mygridview.DataSource = userdb.getUsers(searchType, searchTerm);
+            List<UserMembers> tempusermem = new List<UserMembers>();
+            tempusermem = userdb.getUsers(searchType, searchTerm);
+            mygridview.DataSource = tempusermem;
+            Session["ListofUserGvResults"] = tempusermem;
+            
         }
 
 
@@ -94,11 +139,15 @@ namespace DBWeb
             string fname = row.Cells[2].Text.ToString();
             string lname = row.Cells[3].Text.ToString();
             txtPermissionListUserNameValue.Text = ad_uid;
+            ViewState["ad_uid"] = ad_uid;
             txtFirstName.Text = fname;
             txtLastName.Text = lname;
             //Retrieve Permission DB obj
             UserAppPermission user_to_apP = new UserAppPermission();
-            gvPermissionList.DataSource = user_to_apP.GetUserAppPermission(ad_uid);
+            List<UserAppPermissionMember> temp_uaP = new List<UserAppPermissionMember>();
+            temp_uaP  = (List<UserAppPermissionMember>) user_to_apP.GetUserAppPermission(ad_uid);
+            gvPermissionList.DataSource = temp_uaP;
+            Session["temp_uaP"] = temp_uaP;
             gvPermissionList.DataBind();
 
 
@@ -106,12 +155,19 @@ namespace DBWeb
         //User Gv Page Change
         private void GvUserList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            throw new NotImplementedException();
+            GridView gvlist = (GridView)sender;
+            gvlist.PageIndex = e.NewPageIndex;
+            gvlist.DataSource = (List<UserMembers>) Session["ListofUserGvResults"];
+            //Execute Search Function, Display to GridView:
+
+            gvlist.DataBind();
+
         }
 
         //Permission Gv Index Change for Editing Permission
         private void GvPermissionList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             //Input: ApID // ApPID // UID
             //Output: ApID // ApPID // UID
             //Display ApN // CloudID/PWD // PermN // Admin
@@ -253,7 +309,7 @@ namespace DBWeb
 
         protected void btnRestart_Click(object sender, EventArgs e)
         {
-
+            mvUserData.ActiveViewIndex = 0;
         }
 
         //Load Template Methods //Load Template Methods //Load Template Methods //Load Template Methods //Load Template Methods 

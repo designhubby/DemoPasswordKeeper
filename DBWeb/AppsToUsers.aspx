@@ -13,6 +13,9 @@
         <a href="\UsersToApps.aspx">Users To Apps</a>
         <a href="\AppsToUsers.aspx">Apps To Users</a>
         <a href ="UserAdd.aspx">Add Users</a>
+                <a href ="ApAdd.aspx">Add App or App Permissions</a>
+        
+        <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
 
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>

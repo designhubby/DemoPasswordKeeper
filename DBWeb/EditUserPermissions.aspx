@@ -4,10 +4,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" type ="text/css" href="StyleSheet1.css" />
     <title></title>
 </head>
 <body>
       <form id="form1" runat="server">
+           <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="\UsersToApps.aspx">Users To Apps</a>
+        <a href="\AppsToUsers.aspx">Apps To Users</a>
+        <a href ="UserAdd.aspx">Add Users</a>
+        <a href ="ApAdd.aspx">Add App or App Permissions</a>
+        <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
+
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+                }
+    </script>
     <asp:MultiView ID="mvUserData" runat="server">
         <asp:View ID="vwUserSearch" runat="server">
             <asp:Table ID="tblUserSearch" runat="server">

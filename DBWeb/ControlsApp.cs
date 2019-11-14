@@ -73,6 +73,7 @@ namespace DBWeb
         BoundField   apP_CloudPwd         = new BoundField();
         BoundField   apP_PermissionNotes  = new BoundField();
         BoundField   apP_admin            = new BoundField();
+        ButtonField  btnApP_Delete        = new ButtonField();
 
         //BoundField ApName              = new TemplateField();
         //TemplateField tfApDetails           = new TemplateField();
@@ -141,6 +142,7 @@ namespace DBWeb
             mygridview.Columns.Add(apP_PermissionNotes);
             mygridview.Columns.Add(apP_admin);
             
+            
         }
 
         public void LoadGridViewInitialConditionsApPwithApName(GridView mygridView)
@@ -162,6 +164,12 @@ namespace DBWeb
             apP_admin.DataField = "admin";
             apName.HeaderText = "Application Name";
             apName.DataField = "appname";
+            btnApP_Delete.HeaderText = "Delete Permission";
+            btnApP_Delete.CommandName = "btnApP_Delete";
+            btnApP_Delete.ButtonType = ButtonType.Link;
+            btnApP_Delete.Text = "Delete";
+            btnApP_Delete.Visible = true;
+
 
         }
 
@@ -173,7 +181,8 @@ namespace DBWeb
             mygridview.Columns.Add(apP_CloudPwd);
             mygridview.Columns.Add(apP_PermissionNotes);
             mygridview.Columns.Add(apP_admin);
-            
+            mygridview.Columns.Add(btnApP_Delete);
+
 
         }
 
