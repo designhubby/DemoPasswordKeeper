@@ -22,14 +22,18 @@ namespace DBWeb
         {
             LoadGvUsersTemplate(gvUsers);//setup gvUsers control with template
             LoadGvApPInitialConditions(gvPermissionList); //setup gvApP control with template
+            LoadGvApPInitialConditions_WO_ApName(gvApP_Existing_Show);
 
             gvUsers.PageIndexChanging += GvUserList_PageIndexChanging;
             gvUsers.SelectedIndexChanged += GvUserList_SelectedIndexChanged;
             ddlApNames_P.SelectedIndexChanged += DdlApNames_P_SelectedIndexChanged;
+            ddlApList.SelectedIndexChanged += DdlApList_SelectedIndexChanged;
 
             gvPermissionList.PageIndexChanging += GvPermissionList_PageIndexChanging;
             gvPermissionList.SelectedIndexChanged += GvPermissionList_SelectedIndexChanged;
             gvPermissionList.RowCommand += GvPermissionList_RowCommand;
+
+            gvApP_Existing_Show.SelectedIndexChanged += GvApP_Existing_Show_SelectedIndexChanged;
 
 
 
@@ -41,7 +45,7 @@ namespace DBWeb
                 //LoadColumns;
                 AddGvUserColumns(gvUsers);
                 LoadGvApPAddColumnswithApName(gvPermissionList);
-
+                LoadGvApPAddColumns_WO_ApName(gvApP_Existing_Show);
 
                 //LoadData;
                 
@@ -50,6 +54,50 @@ namespace DBWeb
                 //DataBind
                 gvUsers.DataBind();
             }
+        }
+
+        private void GvApP_Existing_Show_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Get Info:apP_ID
+            GridView _gridView = (GridView)sender;
+            GridViewRow _Selected_gridViewRow = _gridView.SelectedRow;
+            int selected_row_index = _gridView.SelectedIndex;
+            int apP_Id = Int32.Parse(_gridView.SelectedDataKey[0].ToString());
+            string ad_uId = ViewState["ad_uid"].ToString();
+            //Link apP_ID to User [ ViewState["ad_uid"]  ]
+            UserAppPermission _userAppPermission = new UserAppPermission();
+            _userAppPermission.SetUserAppPermission_input_ad_uid(apP_Id, ad_uId);
+            mvUserData.ActiveViewIndex = 3;
+            List<UserAppPermissionMember> _userApPMemTemp = new List<UserAppPermissionMember>();
+
+            _userApPMemTemp = _userAppPermission.GetUserAppPermission(ad_uId);
+            gvConfirmResults.DataSource = _userApPMemTemp;
+            gvConfirmResults.DataBind();
+
+            //Return to vwPermissionList to reflect newly linked permission
+        }
+
+        private void DdlApList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList DdlAp = (DropDownList)sender;
+            //get Ap_ID
+            int current_row_index = DdlAp.SelectedIndex; 
+            int current_row_value = Int32.Parse(DdlAp.SelectedValue.ToString()); // = Ap_ID
+            string current_row_text = DdlAp.SelectedItem.Text.ToString();
+            // Query: All permissions(apP by apID) associated with that app
+            List<AppPMember> _AppPMembers = new List<AppPMember>();
+            AppsAccessLayer _AppsAccessLayer = new AppsAccessLayer();
+            _AppPMembers = _AppsAccessLayer.GetAppPermissions(current_row_value);
+            gvApP_Existing_Show.DataSource = _AppPMembers;
+            gvApP_Existing_Show.DataBind();
+                //varlist = GetApP(apID)
+                //gvExistingApP.DataSource = varlist
+                //gvExistingApP.Databind()
+                            //Choose the permission record 
+                                //Get Info:apID, apP_ID
+                                //Link apP_ID to User [ ViewState["ad_uid"]  ]
+                                //Return to vwPermissionList to reflect newly linked permission
+
         }
 
         private void GvPermissionList_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -214,10 +262,10 @@ namespace DBWeb
         private void LoadDDB_ApList(DropDownList myddl)
         {
             AppsAccessLayer aalDB = new AppsAccessLayer();
-            ddlApNames_P.DataSource = aalDB.GetAppMembers("");
-            ddlApNames_P.DataValueField = "app_id";
-            ddlApNames_P.DataTextField = "name";
-            ddlApNames_P.DataBind();
+            myddl.DataSource = aalDB.GetAppMembers("");
+            myddl.DataValueField = "app_id";
+            myddl.DataTextField = "name";
+            myddl.DataBind();
 
             //foreach (var appMem in appList)
             //{
@@ -305,7 +353,24 @@ namespace DBWeb
             gvConfirmResults.DataBind();
             mvUserData.ActiveViewIndex = 3;
         }
+        protected void btnSelectPermission_Click(object sender, EventArgs e)
+        {
+            //Load Application list into ddl
+            LoadDDB_ApList(ddlApList);
+            //switch to mv 4
+            mvUserData.ActiveViewIndex = 4;
+            //ddl:
+            //add trigger for ddl
+            //Select App Then
+            //Query: All permissions (apP by apID) associated with that app
+            //Choose the permission record 
+            //Get Info:apID, apP_ID
+            //Link apP_ID to User
+            //Return to vwPermissionList to reflect newly linked permission
 
+
+
+        }
 
         protected void btnRestart_Click(object sender, EventArgs e)
         {
@@ -334,10 +399,20 @@ namespace DBWeb
         {
             _iSetupGridView.LoadGridViewInitialConditionsApPwithApName(mygv);
         }
+        private void LoadGvApPInitialConditions_WO_ApName(GridView mygv)
+        {
+            _iSetupGridView.LoadGridViewInitialConditionsApP(mygv);
+        }
 
         private void LoadGvApPAddColumnswithApName(GridView mygv)
         {
             _iSetupGridView.LoadGridViewColumnsApPwithApName(mygv);
         }
+        private void LoadGvApPAddColumns_WO_ApName(GridView mygv)
+        {
+            _iSetupGridView.LoadGridViewColumnsApP(mygv);
+        }
+
+
     }
 }

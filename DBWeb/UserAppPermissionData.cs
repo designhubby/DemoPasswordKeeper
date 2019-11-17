@@ -142,12 +142,12 @@ namespace DBWeb
         }
 
         //Associate UID with Existing ApP
-        public void SetUserAppPermission_input_uid(int app_id, int uid)
+        public void SetUserAppPermission_input_ad_uid(int app_id, string ad_uid)
         {
             using (UserAccessEntities db = new UserAccessEntities())
             {
                 var usermem = (from user in db.Users
-                               where user.uid == uid
+                               where user.ad_uid == ad_uid
                                select user).FirstOrDefault();
                 var appmem = (from app in db.App_Permission
                               where app.app_permission_id == app_id
@@ -157,6 +157,7 @@ namespace DBWeb
                 db.SaveChanges();
             }
         }
+
 
         //Remove association of UID with Existing ApP
         public void DelUserAppPermission(int my_apP_id, int my_uid)

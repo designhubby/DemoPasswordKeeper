@@ -121,6 +121,7 @@
                 </asp:GridView>
                 <div></div>
                 <asp:Button ID="btnNewPermission" runat="server" OnClick="btnNewPermission_Click" Text="New Permission" />
+            <asp:Button ID="btnSelectPermission" runat="server" OnClick="btnSelectPermission_Click" Text="Select Existing Permission" />
         </asp:View>
         <asp:View ID="vwEditApP" runat="server">
                 <asp:Table ID="tblEditApP" runat="server">
@@ -178,6 +179,34 @@
                 <asp:GridView ID="gvConfirmResults" runat="server"></asp:GridView>
                 <asp:Button ID="btnRestart" runat="server" Text ="Home" OnClick="btnRestart_Click" />
             </asp:View>
+        <asp:View ID="vwApP_Exist_Show" runat="server">
+            <asp:Table ID="tblApP_Exist_Show" runat="server">
+                <asp:TableHeaderRow>
+                    <asp:TableCell ColumnSpan="2">
+                        <asp:Label ID="lblColumn1" Text="Existing Application Permission" runat="server"></asp:Label>
+                    </asp:TableCell>
+                </asp:TableHeaderRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label ID="lblApName" Text="Select the Application: " runat="server"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:DropDownList ID="ddlApList" AutoPostBack="true" runat="server" ></asp:DropDownList>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell ColumnSpan="2">
+                        <asp:Label ID="lblGvInstructions" Text="Select the existing permission to link to user" runat="server"></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell ColumnSpan="2">
+                        <asp:GridView ID="gvApP_Existing_Show" runat="server"></asp:GridView>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            
+        </asp:View>
            
 
     </asp:MultiView>
