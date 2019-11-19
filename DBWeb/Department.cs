@@ -12,25 +12,18 @@ namespace DBWeb
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Department()
         {
-            this.App_Permission = new HashSet<App_Permission>();
+            this.Users = new HashSet<User>();
         }
     
-        public int uid { get; set; }
-        public string ad_uid { get; set; }
-        public string fname { get; set; }
-        public string lname { get; set; }
-        public string department { get; set; }
-        public string Role { get; set; }
-        public Nullable<int> active { get; set; }
-        public Nullable<int> Department_Id { get; set; }
+        public int Department_Id { get; set; }
+        public string Department_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<App_Permission> App_Permission { get; set; }
-        public virtual Department Department1 { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

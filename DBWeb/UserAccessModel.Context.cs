@@ -30,6 +30,7 @@ namespace DBWeb
         public virtual DbSet<App> Apps { get; set; }
         public virtual DbSet<App_Permission> App_Permission { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
     
         public virtual ObjectResult<Find_A_UserIDs_AppPermission_Result> Find_A_UserIDs_AppPermission(string user_id)
         {

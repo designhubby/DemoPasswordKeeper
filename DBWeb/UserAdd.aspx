@@ -146,16 +146,11 @@
                 <asp:Table ID="tblSave_Confirm" runat="server">
                     <asp:TableHeaderRow>
                         <asp:TableCell>
-                            <asp:Label ID="lblInfo" runat="server" Text="Info"></asp:Label>
-                            <asp:TextBox ID="txtInfo" runat="server"></asp:TextBox>
+                            <asp:Label ID="lblInfo" runat="server" Text="Saved Information"></asp:Label>
+                           
                         </asp:TableCell>
                     </asp:TableHeaderRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label ID="lblInfo2" runat="server" Text="Info2"></asp:Label>
-                            <asp:TextBox ID="txtInfo2" runat="server"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
+                    
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan ="2">
                             <asp:GridView ID="gvSaveResults" runat="server"></asp:GridView>

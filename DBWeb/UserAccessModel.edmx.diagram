@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="UserAccessModel.User" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="UserAccessModel.FK_AppID" ManuallyRouted="false" />
         <AssociationConnector Association="UserAccessModel.User_AppPermission" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UserAccessModel.Department" Width="1.5" PointX="0.75" PointY="4.875" />
+        <AssociationConnector Association="UserAccessModel.FK_Department_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
