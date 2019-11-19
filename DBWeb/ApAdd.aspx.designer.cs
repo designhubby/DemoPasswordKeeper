@@ -7,11 +7,40 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DBWeb {
-    
-    
-    public partial class ApAdd {
-        
+namespace DBWeb
+{
+
+
+    public partial class ApAdd
+    {
+
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// tblTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tblTitle;
+
+        /// <summary>
+        /// ibTitleBanner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibTitleBanner;
+
         /// <summary>
         /// mvApAdd control.
         /// </summary>
@@ -20,7 +49,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView mvApAdd;
-        
+
         /// <summary>
         /// vwSearch_Ap control.
         /// </summary>
@@ -29,7 +58,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwSearch_Ap;
-        
+
         /// <summary>
         /// Table1 control.
         /// </summary>
@@ -38,7 +67,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table Table1;
-        
+
         /// <summary>
         /// lblSearchTerm control.
         /// </summary>
@@ -47,7 +76,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchTerm;
-        
+
         /// <summary>
         /// txtSearchTerm control.
         /// </summary>
@@ -56,7 +85,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchTerm;
-        
+
         /// <summary>
         /// lblSearchType control.
         /// </summary>
@@ -65,7 +94,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchType;
-        
+
         /// <summary>
         /// ddlSearchType control.
         /// </summary>
@@ -74,7 +103,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSearchType;
-        
+
         /// <summary>
         /// btnSearchSubmit control.
         /// </summary>
@@ -83,7 +112,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchSubmit;
-        
+
         /// <summary>
         /// vwSearchResultsAp control.
         /// </summary>
@@ -92,7 +121,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwSearchResultsAp;
-        
+
         /// <summary>
         /// tblSearchResults control.
         /// </summary>
@@ -101,7 +130,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblSearchResults;
-        
+
         /// <summary>
         /// gvSearchApResults control.
         /// </summary>
@@ -110,7 +139,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchApResults;
-        
+
         /// <summary>
         /// btnNewApp control.
         /// </summary>
@@ -119,7 +148,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNewApp;
-        
+
         /// <summary>
         /// vwEditAp control.
         /// </summary>
@@ -128,7 +157,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwEditAp;
-        
+
         /// <summary>
         /// tblEditApDetails control.
         /// </summary>
@@ -137,7 +166,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblEditApDetails;
-        
+
         /// <summary>
         /// lblEditApDetailTitle control.
         /// </summary>
@@ -146,7 +175,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEditApDetailTitle;
-        
+
         /// <summary>
         /// lblApName control.
         /// </summary>
@@ -155,7 +184,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblApName;
-        
+
         /// <summary>
         /// txtApName control.
         /// </summary>
@@ -164,7 +193,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApName;
-        
+
         /// <summary>
         /// lblApDetails control.
         /// </summary>
@@ -173,7 +202,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblApDetails;
-        
+
         /// <summary>
         /// txtApDetails control.
         /// </summary>
@@ -182,7 +211,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApDetails;
-        
+
         /// <summary>
         /// btnAppSave control.
         /// </summary>
@@ -191,7 +220,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAppSave;
-        
+
         /// <summary>
         /// dvApplicationDetails control.
         /// </summary>
@@ -200,7 +229,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView dvApplicationDetails;
-        
+
         /// <summary>
         /// vwPermissionList control.
         /// </summary>
@@ -209,7 +238,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwPermissionList;
-        
+
         /// <summary>
         /// tblPermissionList control.
         /// </summary>
@@ -218,7 +247,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblPermissionList;
-        
+
         /// <summary>
         /// lblPermissionListHeader control.
         /// </summary>
@@ -227,7 +256,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPermissionListHeader;
-        
+
         /// <summary>
         /// lblPermissionListAppNameKey control.
         /// </summary>
@@ -236,7 +265,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPermissionListAppNameKey;
-        
+
         /// <summary>
         /// lblPermissionListAppNameValue control.
         /// </summary>
@@ -245,7 +274,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPermissionListAppNameValue;
-        
+
         /// <summary>
         /// gvPermissionList control.
         /// </summary>
@@ -254,7 +283,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvPermissionList;
-        
+
         /// <summary>
         /// btnNewPermission control.
         /// </summary>
@@ -263,7 +292,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNewPermission;
-        
+
         /// <summary>
         /// vwEditApP control.
         /// </summary>
@@ -272,7 +301,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwEditApP;
-        
+
         /// <summary>
         /// tblEditApP control.
         /// </summary>
@@ -281,7 +310,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblEditApP;
-        
+
         /// <summary>
         /// lblEditApP_Title control.
         /// </summary>
@@ -290,7 +319,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEditApP_Title;
-        
+
         /// <summary>
         /// lblApName_P control.
         /// </summary>
@@ -299,7 +328,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblApName_P;
-        
+
         /// <summary>
         /// txtApName_P control.
         /// </summary>
@@ -308,7 +337,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApName_P;
-        
+
         /// <summary>
         /// lblCloudUid control.
         /// </summary>
@@ -317,7 +346,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCloudUid;
-        
+
         /// <summary>
         /// txtCloudUid control.
         /// </summary>
@@ -326,7 +355,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCloudUid;
-        
+
         /// <summary>
         /// lblCloudPwd control.
         /// </summary>
@@ -335,7 +364,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCloudPwd;
-        
+
         /// <summary>
         /// txtCloudPwd control.
         /// </summary>
@@ -344,7 +373,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCloudPwd;
-        
+
         /// <summary>
         /// lblPermissionNotes control.
         /// </summary>
@@ -353,7 +382,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPermissionNotes;
-        
+
         /// <summary>
         /// txtPermissionNotes control.
         /// </summary>
@@ -362,7 +391,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPermissionNotes;
-        
+
         /// <summary>
         /// lblIsAdmin control.
         /// </summary>
@@ -371,7 +400,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIsAdmin;
-        
+
         /// <summary>
         /// txtIsAdmin control.
         /// </summary>
@@ -380,7 +409,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIsAdmin;
-        
+
         /// <summary>
         /// btnSavePermission control.
         /// </summary>
@@ -389,7 +418,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSavePermission;
-        
+
         /// <summary>
         /// vwConfirm_Save control.
         /// </summary>
@@ -398,7 +427,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwConfirm_Save;
-        
+
         /// <summary>
         /// gvConfirmResults control.
         /// </summary>
@@ -407,7 +436,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvConfirmResults;
-        
+
         /// <summary>
         /// btnRestart control.
         /// </summary>

@@ -8,28 +8,38 @@
     <title></title>
 </head>
 <body>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="\UsersToApps.aspx">Users To Apps</a>
-        <a href="\AppsToUsers.aspx">Apps To Users</a>
-        <a href ="UserAdd.aspx">Add Users</a>
-                <a href ="ApAdd.aspx">Add App or App Permissions</a>
-        <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
-
-    </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-    <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-        }
-
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-                }
-    </script>
+   
     <form id="form1" runat="server">
-        <div>
+       <asp:Table ID="tblTitle" runat="server">
+            <asp:TableHeaderRow>
+               <asp:TableCell>
+                   <asp:ImageButton ImageUrl="~/graphics/ocot logo.JPG" ID="ibTitleBanner" runat="server" PostBackUrl="~/Default.aspx" />
+               </asp:TableCell>
+            </asp:TableHeaderRow>
+        </asp:Table>
+  
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+            <a href="\AppsToUsers.aspx">Apps To Users</a>
+            <a href ="UserAdd.aspx">Add Users</a>
+            <a href ="ApAdd.aspx">Add App or App Permissions</a>
+        
+            <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
+
         </div>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+    <div>
+    </div>
         <asp:MultiView ID="mvUserData" runat="server">
             <asp:View ID="Search" runat="server">
                 
@@ -67,7 +77,7 @@
             </asp:View>
             <asp:View ID="Results" runat="server">
                 <asp:Button ID="btnBackToStep1" runat="server" Text="Back" OnClick="btnBackToStep1_Click" />
-                <asp:GridView ID="gvUsers" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="gvUsers" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -153,7 +163,18 @@
                     
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan ="2">
-                            <asp:GridView ID="gvSaveResults" runat="server"></asp:GridView>
+                            <asp:GridView ID="gvSaveResults" runat="server">
+                                <AlternatingRowStyle BackColor="White" />
+                                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                <SortedDescendingHeaderStyle BackColor="#820000" />
+                            </asp:GridView>
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>

@@ -9,25 +9,34 @@
 </head>
 <body>
       <form id="form1" runat="server">
-           <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="\UsersToApps.aspx">Users To Apps</a>
-        <a href="\AppsToUsers.aspx">Apps To Users</a>
-        <a href ="UserAdd.aspx">Add Users</a>
-        <a href ="ApAdd.aspx">Add App or App Permissions</a>
-        <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
+        <asp:Table ID="tblTitle" runat="server">
+            <asp:TableHeaderRow>
+               <asp:TableCell>
+                   <asp:ImageButton ImageUrl="~/graphics/ocot logo.JPG" ID="ibTitleBanner" runat="server" PostBackUrl="~/Default.aspx" />
+               </asp:TableCell>
+            </asp:TableHeaderRow>
+        </asp:Table>
+  
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+            <a href="\AppsToUsers.aspx">Apps To Users</a>
+            <a href ="UserAdd.aspx">Add Users</a>
+            <a href ="ApAdd.aspx">Add App or App Permissions</a>
+        
+            <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
 
-    </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-    <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-        }
+        </div>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
 
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-                }
-    </script>
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
     <asp:MultiView ID="mvUserData" runat="server">
         <asp:View ID="vwUserSearch" runat="server">
             <asp:Table ID="tblUserSearch" runat="server">
@@ -56,7 +65,7 @@
             </asp:Table>
 
             <br />
-            <asp:GridView ID="gvUsers" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="gvUsers" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both">
                 <AlternatingRowStyle BackColor="White" />
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -107,7 +116,7 @@
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
-                <asp:GridView ID="gvPermissionList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="gvPermissionList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -176,7 +185,18 @@
                 <asp:Button ID="btnSavePermission" runat="server" OnClick="btnSavePermission_Click" Text="Save" />
             </asp:View>
              <asp:View ID="vwConfirm_Save" runat="server">
-                <asp:GridView ID="gvConfirmResults" runat="server"></asp:GridView>
+                <asp:GridView ID="gvConfirmResults" runat="server">
+                    <AlternatingRowStyle BackColor="White" />
+                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                    <SortedDescendingHeaderStyle BackColor="#820000" />
+                </asp:GridView>
                 <asp:Button ID="btnRestart" runat="server" Text ="Home" OnClick="btnRestart_Click" />
             </asp:View>
         <asp:View ID="vwApP_Exist_Show" runat="server">

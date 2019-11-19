@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DBWeb {
-    
-    
-    public partial class AppsToUsers {
-        
+namespace DBWeb
+{
+
+
+    public partial class AppsToUsers
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,25 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
+        /// <summary>
+        /// tblTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tblTitle;
+
+        /// <summary>
+        /// ibTitleBanner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibTitleBanner;
+
         /// <summary>
         /// lblAppSearch control.
         /// </summary>
@@ -29,7 +49,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAppSearch;
-        
+
         /// <summary>
         /// txtAppSearch control.
         /// </summary>
@@ -38,7 +58,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppSearch;
-        
+
         /// <summary>
         /// btnAppSearch control.
         /// </summary>
@@ -47,7 +67,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAppSearch;
-        
+
         /// <summary>
         /// gvAppList control.
         /// </summary>
@@ -56,7 +76,7 @@ namespace DBWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvAppList;
-        
+
         /// <summary>
         /// gvUserList control.
         /// </summary>

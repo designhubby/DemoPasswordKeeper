@@ -90,11 +90,11 @@ namespace DBWeb
             mygridview.PageSize = 10;
             btnApEdit_Ap_Select.HeaderText = "Edit Application";
             btnApEdit_Ap_Select.Text = "Edit Application";
-            btnApEdit_Ap_Select.ButtonType = ButtonType.Button;
+            btnApEdit_Ap_Select.ButtonType = ButtonType.Link;
             btnApEdit_Ap_Select.CommandName = "cmdEditAp";
             btnApEdit_Ap_Select.Visible = true;
             btnApEdit_P_Select.CommandName = "cmdEditApP";
-            btnApEdit_P_Select.ButtonType = ButtonType.Button;
+            btnApEdit_P_Select.ButtonType = ButtonType.Link;
             btnApEdit_P_Select.HeaderText = "Edit Permission";
             btnApEdit_P_Select.Text = "Edit Permission";
             btnApEdit_P_Select.Visible = true;
