@@ -24,11 +24,12 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         
-            <a href="\AppsToUsers.aspx">Apps To Users</a>
+            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
+            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
             <a href ="UserAdd.aspx">Add Users</a>
             <a href ="ApAdd.aspx">Add App or App Permissions</a>
         
-            <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
+            
 
         </div>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
@@ -46,37 +47,39 @@
         </div>
         <asp:MultiView ID="mvApAdd" runat="server">
             <asp:View ID="vwSearch_Ap" runat="server">
-                
-                <asp:Table ID="Table1" runat="server" Height="131px" Width="600px">
-                    <asp:TableHeaderRow> 
-                        <asp:TableCell ColumnSpan="2">Step 1: Search Application</asp:TableCell>
+                <asp:Panel ID="SearchAp" runat="server" DefaultButton="btnSearchSubmit">
+                     <asp:Table ID="Table1" runat="server" Height="131px" Width="600px">
+                        <asp:TableHeaderRow> 
+                            <asp:TableCell ColumnSpan="2">Step 1: Search Application</asp:TableCell>
                         
-                    </asp:TableHeaderRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2">Type in a Search Term and select Filter Type</asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label ID="lblSearchTerm" runat="server" Text="Search Term"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtSearchTerm" runat="server"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label ID="lblSearchType" runat="server" Text="Filter Type"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:DropDownList ID="ddlSearchType" runat="server"></asp:DropDownList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2">
-                            <asp:Button ID="btnSearchSubmit" runat="server" OnClick="btnSearchSubmit_Click" Text ="Search"/>
-                        </asp:TableCell>
-                    </asp:TableRow>
+                        </asp:TableHeaderRow>
+                        <asp:TableRow>
+                            <asp:TableCell ColumnSpan="2">Type in a Search Term and select Filter Type</asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label ID="lblSearchTerm" runat="server" Text="Search Term"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox ID="txtSearchTerm" runat="server"></asp:TextBox>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label ID="lblSearchType" runat="server" Text="Filter Type"></asp:Label>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:DropDownList ID="ddlSearchType" runat="server"></asp:DropDownList>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell ColumnSpan="2">
+                                <asp:Button ID="btnSearchSubmit" runat="server" OnClick="btnSearchSubmit_Click" Text ="Search"/>
+                            </asp:TableCell>
+                        </asp:TableRow>
                 </asp:Table>
+                </asp:Panel>
+               
       
             </asp:View>
             <asp:View ID="vwSearchResultsAp" runat="server">

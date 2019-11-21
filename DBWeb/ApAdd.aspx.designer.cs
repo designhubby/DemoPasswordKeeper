@@ -60,6 +60,15 @@ namespace DBWeb
         protected global::System.Web.UI.WebControls.View vwSearch_Ap;
 
         /// <summary>
+        /// SearchAp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel SearchAp;
+
+        /// <summary>
         /// Table1 control.
         /// </summary>
         /// <remarks>

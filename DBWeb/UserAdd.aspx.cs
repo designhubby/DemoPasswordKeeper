@@ -181,6 +181,10 @@ namespace DBWeb
         {
             mvUserData.ActiveViewIndex = 2;
         }
+        protected void btnRestart_Click(object sender, EventArgs e)
+        {
+            mvUserData.ActiveViewIndex = 0;
+        }
     }
 
 

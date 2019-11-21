@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DBWeb {
-    
-    
-    public partial class SiteMaster {
-        
+namespace DBWeb
+{
+
+
+    public partial class SiteMaster
+    {
+
         /// <summary>
         /// MainContent control.
         /// </summary>

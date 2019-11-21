@@ -21,11 +21,10 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         
-            <a href="\AppsToUsers.aspx">Apps To Users</a>
+            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
+            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
             <a href ="UserAdd.aspx">Add Users</a>
             <a href ="ApAdd.aspx">Add App or App Permissions</a>
-        
-            <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
 
         </div>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
@@ -42,8 +41,8 @@
     </div>
         <asp:MultiView ID="mvUserData" runat="server">
             <asp:View ID="Search" runat="server">
-                
-                <asp:Table ID="Table1" runat="server" Height="131px" Width="600px">
+                <asp:Panel ID="pnSearch" runat="server" DefaultButton="btnSearchSubmit">
+                    <asp:Table ID="Table1" runat="server" Height="131px" Width="600px">
                     <asp:TableHeaderRow> 
                         <asp:TableCell ColumnSpan="2">Step 1: Search User</asp:TableCell>
                         
@@ -73,6 +72,8 @@
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
+                </asp:Panel>
+                
       
             </asp:View>
             <asp:View ID="Results" runat="server">
@@ -153,6 +154,7 @@
             </asp:View>
             <asp:View ID="Save_Confirm" runat="server">
                 <asp:Button ID="btnBackToStep3" runat="server" Text="Back" OnClick="btnBackToStep3_Click" />
+                <asp:Button ID="btnRestart" runat="server" Text ="Home" OnClick="btnRestart_Click" />
                 <asp:Table ID="tblSave_Confirm" runat="server">
                     <asp:TableHeaderRow>
                         <asp:TableCell>

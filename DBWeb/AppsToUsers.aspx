@@ -21,11 +21,10 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         
-            <a href="\AppsToUsers.aspx">Apps To Users</a>
+            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
+            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
             <a href ="UserAdd.aspx">Add Users</a>
             <a href ="ApAdd.aspx">Add App or App Permissions</a>
-        
-            <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
 
         </div>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
@@ -41,9 +40,12 @@
         <div>
         </div>
 
-        <asp:Label ID="lblAppSearch" runat="server" Text="App Name"></asp:Label>
-        <asp:TextBox ID="txtAppSearch" runat="server"></asp:TextBox>
-        <asp:Button ID="btnAppSearch" runat="server" Text="Search" OnClick="btnAppSearch_Click" />
+        <asp:Panel ID="pnAppSearch" runat="server" DefaultButton="btnAppSearch">
+            <asp:Label ID="lblAppSearch" runat="server" Text="App Name"></asp:Label>
+            <asp:TextBox ID="txtAppSearch" runat="server"></asp:TextBox>
+            <asp:Button ID="btnAppSearch" runat="server" Text="Search" OnClick="btnAppSearch_Click" />
+        </asp:Panel>
+        
         <asp:GridView ID="gvAppList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

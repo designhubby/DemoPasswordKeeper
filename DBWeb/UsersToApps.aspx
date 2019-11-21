@@ -10,11 +10,10 @@
 <body>
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="\UsersToApps.aspx">Users To Apps</a>
-      <a href="\AppsToUsers.aspx">Apps To Users</a>
-      <a href ="UserAdd.aspx">Add Users</a>
-                <a href ="ApAdd.aspx">Add App or App Permissions</a>
-        <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
+            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
+            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
+            <a href ="UserAdd.aspx">Add Users</a>
+            <a href ="ApAdd.aspx">Add App or App Permissions</a>
 
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>

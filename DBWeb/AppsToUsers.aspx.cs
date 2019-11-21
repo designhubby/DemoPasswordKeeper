@@ -39,7 +39,7 @@ namespace DBWeb
         {
 
             BuildGridTemplate();
-
+            
 
         }
 
@@ -48,6 +48,7 @@ namespace DBWeb
             if (!IsPostBack)
             {
                 LoadGvShowApps("");
+                BuildGridViewTemplateUsers();
 
 
             }
@@ -100,11 +101,11 @@ namespace DBWeb
             bfActive.HeaderText = "Is Employee Active?";
             bfActive.DataField = "active";
 
-            gvAppList.Columns.Add(bfUid);
-            gvAppList.Columns.Add(bfFname);
-            gvAppList.Columns.Add(bfLname);
-            gvAppList.Columns.Add(bfRole);
-            gvAppList.Columns.Add(bfActive);
+            gvUserList.Columns.Add(bfUid);
+            gvUserList.Columns.Add(bfFname);
+            gvUserList.Columns.Add(bfLname);
+            gvUserList.Columns.Add(bfRole);
+            gvUserList.Columns.Add(bfActive);
 
 
         }
@@ -124,6 +125,7 @@ namespace DBWeb
 
         protected void btnAppSearch_Click(object sender, EventArgs e)
         {
+            
             LoadGvShowApps(txtAppSearch.Text);
             gvAppList.DataBind();
         }

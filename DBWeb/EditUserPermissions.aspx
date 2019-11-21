@@ -20,11 +20,10 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         
-            <a href="\AppsToUsers.aspx">Apps To Users</a>
+            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
+            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
             <a href ="UserAdd.aspx">Add Users</a>
             <a href ="ApAdd.aspx">Add App or App Permissions</a>
-        
-            <a href ="EditUserPermissions.aspx">Edit Users and Permissions</a>
 
         </div>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
@@ -39,30 +38,33 @@
         </script>
     <asp:MultiView ID="mvUserData" runat="server">
         <asp:View ID="vwUserSearch" runat="server">
-            <asp:Table ID="tblUserSearch" runat="server">
-                <asp:TableHeaderRow>
-                    <asp:TableCell ColumnSpan ="3">
-                        <asp:Label ID="lblSearchUser_Title" runat="server" Text ="Type in your search term"></asp:Label>
-                    </asp:TableCell>
-                </asp:TableHeaderRow>
-                <asp:TableRow>
+            <asp:Panel ID="SearchUser" runat="server" DefaultButton="btnUserSearchSubmit">
+                <asp:Table ID="tblUserSearch" runat="server">
+                    <asp:TableHeaderRow>
+                        <asp:TableCell ColumnSpan ="3">
+                            <asp:Label ID="lblSearchUser_Title" runat="server" Text ="Type in your search term"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableHeaderRow>
+                    <asp:TableRow>
                 
-                    <asp:TableCell>
-                        <asp:Label ID="lblSearchUser" runat="server" Text="Search User:"></asp:Label>
-                    </asp:TableCell>
-                    <asp:TableCell>
-                        <asp:TextBox ID="txtSearchString" runat="server"></asp:TextBox>
-                    </asp:TableCell>
-                    <asp:TableCell>
-                        <asp:DropDownList ID="ddlSearchType" runat="server"></asp:DropDownList>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell ColumnSpan="3" HorizontalAlign="Right">
-                        <asp:Button ID="btnUserSearchSubmit" runat="server" Text="Search" OnClick="btnUserSearchSubmit_Click" />
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
+                        <asp:TableCell>
+                            <asp:Label ID="lblSearchUser" runat="server" Text="Search User:"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:TextBox ID="txtSearchString" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:DropDownList ID="ddlSearchType" runat="server"></asp:DropDownList>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell ColumnSpan="3" HorizontalAlign="Right">
+                            <asp:Button ID="btnUserSearchSubmit" runat="server" Text="Search" OnClick="btnUserSearchSubmit_Click" />
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </asp:Panel>
+
 
             <br />
             <asp:GridView ID="gvUsers" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both">
