@@ -8,6 +8,7 @@ namespace DBWeb
 
     public class AppsToUsersAccessLayer
     {
+        //find user that belong to given ap
         public List<UserMembers> getUsers(int search_type, int search_term)
         {
 

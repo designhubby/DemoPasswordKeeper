@@ -120,6 +120,7 @@ namespace DBWeb
         //        db.SaveChanges();
         //    }
         //}
+        //New ApP
         public int SetUserAppPermission(int app_id, int uid, string clouduid, string cloudpwd, string perm, int adm)
         {
             using (UserAccessEntities db = new UserAccessEntities())
