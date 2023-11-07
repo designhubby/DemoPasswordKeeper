@@ -4,6 +4,7 @@
     <header runat="server">
 
     </header>
-    <asp:ImageButton ImageUrl="~/graphics/ocot logo.JPG" ID="ibTitleBanner" runat="server" PostBackUrl="~/Default.aspx" />
+<asp:Image ID="logoImage" runat="server" ImageUrl="~/graphics/lock.svg" Width="200" Height="100" CssClass="clickable-image" />
+    <asp:Label Text="Password Keeper" runat="server" Font-Size="24pt" />
     
 </asp:Content>

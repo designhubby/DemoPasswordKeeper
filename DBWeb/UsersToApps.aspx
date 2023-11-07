@@ -1,32 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UsersToApps.aspx.cs" Inherits="DBWeb.UsersToApps" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UsersToApps.aspx.cs" Inherits="DBWeb.UsersToApps" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-     <link rel="stylesheet" type ="text/css" href="StyleSheet1.css" />
-    <title></title>
-</head>
-<body>
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
-            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
-            <a href ="UserAdd.aspx">Add Users</a>
-            <a href ="ApAdd.aspx">Add App or App Permissions</a>
-
-    </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-    <script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-</script>
-    <form id="form1" runat="server">
         <div>
             Other Pages:&nbsp;
             <asp:HyperLink ID="HyperLink1" runat="server">Apps To Users</asp:HyperLink>
@@ -57,6 +31,4 @@ function closeNav() {
         <asp:GridView ID="gvAppsPermission" runat="server">
         </asp:GridView>
 
-    </form>
-</body>
-</html>
+    </asp:Content>

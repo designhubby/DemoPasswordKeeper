@@ -1,42 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserAdd.aspx.cs" Inherits="DBWeb.UserAdd" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link rel="stylesheet" type ="text/css" href="StyleSheet1.css" />
-    <title></title>
-</head>
-<body>
-   
-    <form id="form1" runat="server">
-       <asp:Table ID="tblTitle" runat="server">
-            <asp:TableHeaderRow>
-               <asp:TableCell>
-                   <asp:ImageButton ImageUrl="~/graphics/ocot logo.JPG" ID="ibTitleBanner" runat="server" PostBackUrl="~/Default.aspx" />
-               </asp:TableCell>
-            </asp:TableHeaderRow>
-        </asp:Table>
-  
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        
-            <a href="\AppsToUsers.aspx">Find Users of Apps</a>
-            <a href ="EditUserPermissions.aspx">Find App Permissions of Users</a>
-            <a href ="UserAdd.aspx">Add Users</a>
-            <a href ="ApAdd.aspx">Add App or App Permissions</a>
-
-        </div>
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-        </script>
+﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="UserAdd.aspx.cs" Inherits="DBWeb.UserAdd" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div>
     </div>
         <asp:MultiView ID="mvUserData" runat="server">
@@ -182,6 +145,6 @@
                 </asp:Table>
             </asp:View>
         </asp:MultiView>
-    </form>
-</body>
-</html>
+
+    </asp:Content>
+
