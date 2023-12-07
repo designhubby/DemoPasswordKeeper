@@ -15,6 +15,7 @@ namespace DBWeb
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     using System.Configuration;
+    using System.Data.Common;
 
     public partial class UserAccessEntities : DbContext
     {
@@ -25,10 +26,13 @@ namespace DBWeb
     
         public static string GetConnectionString()
         {
+            string metadata = "metadata=res://*/UserAccessModel.csdl|res://*/UserAccessModel.ssdl|res://*/UserAccessModel.msl;";
+
             string connectionString = Environment.ExpandEnvironmentVariables(
                      ConfigurationManager.AppSettings["SQLConnection"]);
-            
-            return connectionString;
+            string fullConnectionString = $"{metadata}provider=System.Data.SqlClient;provider connection string=\"{connectionString}\"";
+
+            return fullConnectionString;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
