@@ -14,14 +14,23 @@ namespace DBWeb
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Configuration;
+
     public partial class UserAccessEntities : DbContext
     {
         public UserAccessEntities()
-            : base("name=UserAccessEntities")
+            : base(GetConnectionString())
         {
         }
     
+        public static string GetConnectionString()
+        {
+            string connectionString = Environment.ExpandEnvironmentVariables(
+                     ConfigurationManager.AppSettings["SQLConnection"]);
+            
+            return connectionString;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
