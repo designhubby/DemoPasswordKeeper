@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UserAccessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="App">
+          <Key>
+            <PropertyRef Name="app_id" />
+          </Key>
+          <Property Name="app_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="details" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="App_Permission">
+          <Key>
+            <PropertyRef Name="app_permission_id" />
+          </Key>
+          <Property Name="app_permission_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="app_id" Type="int" Nullable="false" />
+          <Property Name="cloud_uid" Type="nvarchar" MaxLength="200" />
+          <Property Name="cloud_pwd" Type="nvarchar" MaxLength="200" />
+          <Property Name="Permission_N" Type="nvarchar" MaxLength="100" />
+          <Property Name="admin" Type="int" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Department_Id" />
+          </Key>
+          <Property Name="Department_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_AppPermission">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="app_permission_id" />
+          </Key>
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="app_permission_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_uid" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="department" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Role" Type="nvarchar(max)" />
+          <Property Name="active" Type="int" />
+          <Property Name="Department_Id" Type="int" />
+        </EntityType>
+        <Association Name="FK_App_Permission">
+          <End Role="App_Permission" Type="Self.App_Permission" Multiplicity="1" />
+          <End Role="User_AppPermission" Type="Self.User_AppPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="App_Permission">
+              <PropertyRef Name="app_permission_id" />
+            </Principal>
+            <Dependent Role="User_AppPermission">
+              <PropertyRef Name="app_permission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppID">
+          <End Role="App" Type="Self.App" Multiplicity="1" />
+          <End Role="App_Permission" Type="Self.App_Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="App">
+              <PropertyRef Name="app_id" />
+            </Principal>
+            <Dependent Role="App_Permission">
+              <PropertyRef Name="app_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Id">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Department_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="User_AppPermission" Type="Self.User_AppPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="User_AppPermission">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Find_A_UserIDs_AppPermission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="UserAccessModelStoreContainer">
+          <EntitySet Name="App" EntityType="Self.App" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="App_Permission" EntityType="Self.App_Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_AppPermission" EntityType="Self.User_AppPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_App_Permission" Association="Self.FK_App_Permission">
+            <End Role="App_Permission" EntitySet="App_Permission" />
+            <End Role="User_AppPermission" EntitySet="User_AppPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppID" Association="Self.FK_AppID">
+            <End Role="App" EntitySet="App" />
+            <End Role="App_Permission" EntitySet="App_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Id" Association="Self.FK_Department_Id">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UID" Association="Self.FK_UID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="User_AppPermission" EntitySet="User_AppPermission" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UserAccessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="App">
+          <Key>
+            <PropertyRef Name="app_id" />
+          </Key>
+          <Property Name="app_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="App_Permission" Relationship="Self.FK_AppID" FromRole="App" ToRole="App_Permission" />
+        </EntityType>
+        <EntityType Name="App_Permission">
+          <Key>
+            <PropertyRef Name="app_permission_id" />
+          </Key>
+          <Property Name="app_permission_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="app_id" Type="Int32" Nullable="false" />
+          <Property Name="cloud_uid" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cloud_pwd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Permission_N" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="admin" Type="Int32" />
+          <NavigationProperty Name="App" Relationship="Self.FK_AppID" FromRole="App_Permission" ToRole="App" />
+          <NavigationProperty Name="Users" Relationship="Self.User_AppPermission" FromRole="App_Permission" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_uid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Int32" />
+          <NavigationProperty Name="App_Permission" Relationship="Self.User_AppPermission" FromRole="Users" ToRole="App_Permission" />
+          <Property Name="Department_Id" Type="Int32" />
+          <NavigationProperty Name="Department1" Relationship="UserAccessModel.FK_Department_Id" FromRole="User" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK_AppID">
+          <End Role="App" Type="Self.App" Multiplicity="1" />
+          <End Role="App_Permission" Type="Self.App_Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="App">
+              <PropertyRef Name="app_id" />
+            </Principal>
+            <Dependent Role="App_Permission">
+              <PropertyRef Name="app_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_AppPermission">
+          <End Role="App_Permission" Type="Self.App_Permission" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="UserAccessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apps" EntityType="Self.App" />
+          <EntitySet Name="App_Permission" EntityType="Self.App_Permission" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_AppID" Association="Self.FK_AppID">
+            <End Role="App" EntitySet="Apps" />
+            <End Role="App_Permission" EntitySet="App_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="User_AppPermission" Association="Self.User_AppPermission">
+            <End Role="App_Permission" EntitySet="App_Permission" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="Find_A_UserIDs_AppPermission" ReturnType="Collection(UserAccessModel.Find_A_UserIDs_AppPermission_Result)">
+          <Parameter Name="user_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Departments" EntityType="UserAccessModel.Department" />
+          <AssociationSet Name="FK_Department_Id" Association="UserAccessModel.FK_Department_Id">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="Find_A_UserIDs_AppPermission_Result">
+          <Property Type="String" Name="ad_uid" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="cloud_uid" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="cloud_pwd" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="admin" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Department_Id" />
+          </Key>
+          <Property Name="Department_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="UserAccessModel.FK_Department_Id" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Department_Id">
+          <End Type="UserAccessModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="UserAccessModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Department_Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UserAccessModelStoreContainer" CdmEntityContainer="UserAccessEntities">
+          <EntitySetMapping Name="Apps">
+            <EntityTypeMapping TypeName="UserAccessModel.App">
+              <MappingFragment StoreEntitySet="App">
+                <ScalarProperty Name="app_id" ColumnName="app_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="details" ColumnName="details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="App_Permission">
+            <EntityTypeMapping TypeName="UserAccessModel.App_Permission">
+              <MappingFragment StoreEntitySet="App_Permission">
+                <ScalarProperty Name="app_permission_id" ColumnName="app_permission_id" />
+                <ScalarProperty Name="app_id" ColumnName="app_id" />
+                <ScalarProperty Name="cloud_uid" ColumnName="cloud_uid" />
+                <ScalarProperty Name="cloud_pwd" ColumnName="cloud_pwd" />
+                <ScalarProperty Name="Permission_N" ColumnName="Permission_N" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UserAccessModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="ad_uid" ColumnName="ad_uid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="User_AppPermission" TypeName="UserAccessModel.User_AppPermission" StoreEntitySet="User_AppPermission">
+            <EndProperty Name="App_Permission">
+              <ScalarProperty Name="app_permission_id" ColumnName="app_permission_id" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="uid" ColumnName="uid" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Find_A_UserIDs_AppPermission" FunctionName="UserAccessModel.Store.Find_A_UserIDs_AppPermission">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UserAccessModel.Find_A_UserIDs_AppPermission_Result">
+                <ScalarProperty Name="ad_uid" ColumnName="ad_uid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cloud_uid" ColumnName="cloud_uid" />
+                <ScalarProperty Name="cloud_pwd" ColumnName="cloud_pwd" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="UserAccessModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
